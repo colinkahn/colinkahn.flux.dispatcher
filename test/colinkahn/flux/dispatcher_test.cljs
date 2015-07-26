@@ -12,16 +12,16 @@
     (def state (set-state! (atom {})))
 
     (defhandler :comedy [action]
-      :was-funny
+      "was-funny"
       {:funny true :who (:who action)})
 
     (defhandler :club [action]
-      :was-funny
+      ["was-funny" "was-hilarious"]
       (do
         (wait-for :comedy)
         {:laughs :audience}))
 
-    (dispatch {:type :was-funny :who "Jerry"})
+    (dispatch {:type "was-funny" :who "Jerry"})
 
     (is (= (get-in @state [:comedy :funny]) true))
     (is (= (get-in @state [:comedy :who])   "Jerry"))

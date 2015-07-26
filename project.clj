@@ -1,4 +1,4 @@
-(defproject colinkahn.flux.dispatcher "1.0.0"
+(defproject colinkahn.flux.dispatcher "1.1.0"
   :description "Clojurescript wrapper for Facebook flux dispatcher"
   :url "https://github.com/colinkahn/colinkahn.flux.dispatcher"
   :license {:name "Eclipse Public License"
@@ -10,7 +10,7 @@
                    :cljsbuild {:builds [{:source-paths ["src" "test"]
                                          :compiler {:output-to "target/main.js"
                                                     :optimizations :whitespace
-                                                    :foreign-libs [{:file "js/Flux.js"
+                                                    :foreign-libs [{:file "src/js/Flux.js"
                                                                     :provides ["cljsjs.flux"]}]
                                                     :pretty-print true}}]
                                :test-commands {"unit-tests" ["phantomjs"
