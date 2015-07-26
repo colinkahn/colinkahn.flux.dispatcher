@@ -11,16 +11,18 @@ A Clojurescript wrapper around Facebook's
 (def state (set-state! (atom {})))
 
 (defhandler :comedy [action]
-  :was-funny
+  "was-funny"
   {:funny true :who (:who action)})
 
 (defhandler :club [action]
-  :was-funny
+  ["was-funny" "was-mildly-amusing"]
   (do
     (wait-for :comedy)
-    {:laughs :audience}))
+    {:audience :laughs}))
 
-(dispatch {:type :was-funny :who "Jerry"})
+(dispatch {:type "was-funny" :who "Jerry"})
+
+@state ; => {:comedy {:funny true :who "Jerry"} :club {:audience :laughs}}
 ```
 
 ## License

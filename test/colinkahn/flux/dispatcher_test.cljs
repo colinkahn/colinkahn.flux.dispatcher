@@ -19,11 +19,9 @@
       ["was-funny" "was-hilarious"]
       (do
         (wait-for :comedy)
-        {:laughs :audience}))
+        {:audience :laughs}))
 
     (dispatch {:type "was-funny" :who "Jerry"})
 
-    (is (= (get-in @state [:comedy :funny]) true))
-    (is (= (get-in @state [:comedy :who])   "Jerry"))
-    (is (= (get-in @state [:club :laughs]) :audience))))
+    (is (= @state {:comedy {:funny true :who "Jerry"} :club {:audience :laughs}}))))
 
